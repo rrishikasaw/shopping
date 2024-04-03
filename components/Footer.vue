@@ -90,7 +90,7 @@
         </div>
       </v-col>
 
-      <v-col
+      <!-- <v-col
         ><h4>Gallery</h4>
         <div>
           <div class="d-flex">
@@ -135,7 +135,7 @@
             />
           </div>
         </div>
-      </v-col>
+      </v-col> -->
       <v-col>
         <h4>Newsletter</h4>
         <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
