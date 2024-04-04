@@ -596,6 +596,7 @@ import kids from '../assets/image/home/section3/sun-kids.jpg';
   max-width: 600px; */
   display: block;
   margin-inline: auto;
+  height: 150px;
 }
 .section5 {
   background-color: #eef2ff;
