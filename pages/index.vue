@@ -1,44 +1,31 @@
 <script setup>
-let items = ref([
-  {
-    src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
-  },
-  {
-    src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
-  },
-  {
-    src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
-  },
-  {
-    src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
-  },
-]);
+import image1 from '../assets/image/home/banner2.png';
+import image2 from '../assets/image/home/banner6.png';
+import image3 from '../assets/image/home/banner7.png';
+import image4 from '../assets/image/home/banner8.png';
+import men from '../assets/image/home/section3/man.webp';
+import women from '../assets/image/home/section3/ppppp.jpg';
+import kid from '../assets/image/home/section3/kids.jpg';
+import mens from '../assets/image/home/section3/sun-men.webp';
+import womens from '../assets/image/home/section3/yyyy.jpeg';
+import kids from '../assets/image/home/section3/sun-kids.jpg';
 </script>
 
 <template>
-  <!-- <v-carousel :show-arrows="false">
-    <v-carousel-item
-      v-for="(item, i) in items"
-      :key="i"
-      :src="item.src"
-      cover
-    ></v-carousel-item>
-  </v-carousel> -->
+  <v-carousel>
+    <v-carousel-item :src="image1" cover></v-carousel-item>
 
-  <section class="section1">
-    <!-- <v-banner>
-  <img src="https://t3.ftcdn.net/jpg/04/65/46/52/360_F_465465254_1pN9MGrA831idD6zIBL7q8rnZZpUCQTy.jpg" alt="">
-</v-banner> -->
-  </section>
+    <v-carousel-item :src="image2" cover></v-carousel-item>
+
+    <v-carousel-item :src="image3" cover></v-carousel-item>
+    <v-carousel-item :src="image4" cover></v-carousel-item>
+  </v-carousel>
 
   <v-container>
     <section class="section2">
       <v-row class="my-10">
         <v-col>
-          <div
-            class="card2 pa-10"
-          
-          >
+          <div class="card2 pa-10">
             <div class="d-flex justify-center align-center circle">
               <Icon
                 name="bx:phone-call"
@@ -52,10 +39,7 @@ let items = ref([
         </v-col>
 
         <v-col>
-          <div
-            class="card2 pa-10"
-  
-          >
+          <div class="card2 pa-10">
             <div class="d-flex justify-center align-center circle">
               <Icon
                 name="streamline:transfer-van"
@@ -69,27 +53,7 @@ let items = ref([
         </v-col>
 
         <v-col>
-          <div
-            class="card2 pa-10"
-      
-          >
-            <div class="d-flex justify-center align-center circle">
-              <Icon
-                name="fluent:payment-32-regular"
-                style="font-size: 30px"
-                class="mb-3 icon"
-              />
-            </div>
-            <p class="text-center mb-1 head">SECURED PAYMENT</p>
-            <p class="text-center">We accept all major credit cards</p>
-          </div>
-        </v-col>
-
-        <v-col>
-          <div
-            class="card2 pa-10"
-           
-          >
+          <div class="card2 pa-10">
             <div class="d-flex justify-center align-center circle">
               <Icon
                 name="bi:arrow-repeat"
@@ -104,96 +68,515 @@ let items = ref([
       </v-row>
     </section>
 
-    <section class="section3 my-10">
-      <v-row>
-        <v-col class="card1">
-         <div class="d-flex justify-content-end align-items-end mt-16 mr-10">
-           <div>
-            <p class="mb-1">Trending Now</p>
-          <h5>WOMAN WERE</h5>
-          <v-btn>SHOP NOW</v-btn>
-           </div>
-         </div>
+    <section class="section4 my-10">
+      <h3 class="text-center" style="font-weight: bold">Eyeglasses</h3>
+
+      <v-row class="mt-10">
+        <v-col>
+          <v-card max-width="400">
+            <v-img class="align-end text-black" height="200" :src="men" cover>
+              <v-card-title>Men</v-card-title>
+            </v-img>
+          </v-card>
         </v-col>
-        <v-col class="mr-10">
-          <div class="card2">
 
-              <div class="d-flex justify-content-start align-items-end pl-16">
-           <div>
-             <p class="mb-1">Tailor-made with-passion</p>
-             <h5>MEANS WEAR</h5>
-          <v-btn>SHOP NOW</v-btn>
-           </div>
-         </div>
+        <v-col cols="12" md="6" lg="4">
+          <v-card max-width="400">
+            <v-img class="align-end text-black" height="200" :src="women" cover>
+              <v-card-title>Women</v-card-title>
+            </v-img>
+          </v-card>
+        </v-col>
 
-          </div>
-          <div class="card3 mt-5">
-  <div class="d-flex justify-content-end align-items-end mt-16">
-           <div>
-            <p class="mb-1">Buy one get one free</p>
-          <h5>KIDS WEAR</h5>
-          <v-btn>SHOP NOW</v-btn>
-           </div>
-         </div>
-
-          </div>
+        <v-col cols="12" md="6" lg="4">
+          <v-card max-width="400">
+            <v-img class="align-end text-black" height="200" :src="kid" cover>
+              <v-card-title>Kid</v-card-title>
+            </v-img>
+          </v-card>
         </v-col>
       </v-row>
     </section>
 
     <section class="section4 my-10">
-<p class="text-center mb-0">Shop by category</p>
-<h3 class="text-center" style="font-weight: bold;">POPULAR COLLECTIONS</h3>
+      <h3 class="text-center" style="font-weight: bold">Sunglasses</h3>
 
-<v-row class="mt-10">
-  <v-col cols="12" md="6" lg="3">
-    <v-card>
-      <img src="../assets/image/home/section3/image1.webp" height="250" class="w-full" alt="">
-      <p class="text-center mb-0">Shorts</p>
-      <p class="text-center">24 Product</p>
-    </v-card>
-  </v-col>
+      <v-row class="mt-10">
+        <v-col cols="12" md="6" lg="4">
+        
 
-  <v-col cols="12" md="6" lg="3">
-    <v-card>
-      <img src="../assets/image/home/section3/image2.webp" height="250" class="w-full" alt="">
-      <p class="text-center mb-0">Shorts</p>
-      <p class="text-center">24 Product</p>
-    </v-card>
-  </v-col>
+            <v-card max-width="400">
+            <v-img class="align-end text-black" height="200" :src="mens" cover>
+              <v-card-title>Men</v-card-title>
+            </v-img>
+          </v-card>
+        </v-col>
 
-  <v-col cols="12" md="6" lg="3">
-    <v-card>
-      <img src="../assets/image/home/section3/image3.jpg" class="w-full" height="250" alt="">
-      <p class="text-center mb-0">Shose</p>
-      <p class="text-center">30 product</p>
-    </v-card>
-  </v-col>
+        <v-col cols="12" md="6" lg="4">
+       
 
-  <v-col cols="12" md="6" lg="3">
-    <v-card>
-      <img src="../assets/image/home/section3/image5.jpg" class="w-full" height="250" alt="">
-      <p class="text-center mb-0">Watch</p>
-      <p class="text-center">24 Product</p>
-    </v-card>
-  </v-col>
+            <v-card max-width="400">
+            <v-img class="align-end text-black" height="200" :src="womens" cover>
+              <v-card-title>Women</v-card-title>
+            </v-img>
+          </v-card>
+        </v-col>
 
-</v-row>
+        <v-col cols="12" md="6" lg="4">
+         <v-card max-width="400">
+            <v-img class="align-end text-black" height="200" :src="kids" cover>
+              <v-card-title>Kid</v-card-title>
+            </v-img>
+          </v-card>
+        </v-col>
+
+         
+      </v-row>
     </section>
   </v-container>
+
+  <section class="section5 py-10">
+    <h2
+      class="ml-16 pb-5"
+      style="font-weight: bold; color: #4d45d1; font-size: 40px"
+    >
+      New Arraivals
+    </h2>
+    <v-sheet class="mx-auto" max-width="2000" style="background-color: #eef2ff">
+      <v-slide-group show-arrows>
+        <v-slide-group-item
+          v-for="n in 25"
+          :key="n"
+          v-slot="{ isSelected, toggle }"
+        >
+          <v-card class="box">
+            <img
+              src="../assets/image/home/section5/eye-glass2.avif"
+              alt=""
+              width="280"
+              height="200"
+            />
+            <div class="pa-3">
+              <div class="d-flex justify-between mt-4">
+                <Icon
+                  name="material-symbols:star"
+                  style="font-size: 30px"
+                  class="mb-3 icon"
+                  color="yellow"
+                />
+                <p>4.60</p>
+                <p>India</p>
+                <p>INSTOCK</p>
+              </div>
+              <p class="mb-1">Premium Transparent Glass...</p>
+              <h5>$240.00</h5>
+              <v-btn color="red">ADD TO CART</v-btn>
+            </div>
+          </v-card>
+        </v-slide-group-item>
+      </v-slide-group>
+    </v-sheet>
+  </section>
+
+  <v-container>
+    <section class="section6 my-10">
+      <h3 class="text-center">View Collection</h3>
+      <v-row class="my-10">
+        <v-col cols="12" md="6" lg="3">
+          <v-card>
+            <img
+              src="../assets/image/mens-lens/lens1.jpg"
+              alt=""
+              width="200"
+              class="w-full"
+            />
+            <div class="pa-5">
+              <p class="mb-1">Vincent Chase Polarized</p>
+              <p class="mb-1">Size:Medium</p>
+              <div class="d-flex justify-between">
+                <p style="font-weight: bold">$2000</p>
+                <div>
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="yellow"
+                  />
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="yellow"
+                  />
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="yellow"
+                  />
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="yellow"
+                  />
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="yellow"
+                  />
+                </div>
+              </div>
+            </div>
+          </v-card>
+        </v-col>
+
+        <v-col cols="12" md="6" lg="3">
+          <v-card>
+            <img
+              src="../assets/image/mens-lens/lens2.jpg"
+              alt=""
+              width="200"
+              class="w-full"
+            />
+            <div class="pa-5">
+              <p class="mb-1">Vincent Chase Polarized</p>
+              <p class="mb-1">Size:Medium</p>
+              <div class="d-flex justify-between">
+                <p style="font-weight: bold">$2000</p>
+                <div>
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="red"
+                  />
+
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="red"
+                  />
+                </div>
+              </div>
+            </div>
+          </v-card>
+        </v-col>
+
+        <v-col cols="12" md="6" lg="3">
+          <v-card>
+            <img
+              src="../assets/image/mens-lens/lens3.jpg"
+              alt=""
+              width="200"
+              class="w-full"
+            />
+            <div class="pa-5">
+              <p class="mb-1">Vincent Chase Polarized</p>
+              <p class="mb-1">Size:Medium</p>
+              <div class="d-flex justify-between">
+                <p style="font-weight: bold">$2000</p>
+                <div>
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="orange"
+                  />
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="orange"
+                  />
+
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="orange"
+                  />
+                </div>
+              </div>
+            </div>
+          </v-card>
+        </v-col>
+
+        <v-col cols="12" md="6" lg="3">
+          <v-card>
+            <img
+              src="../assets/image/mens-lens/lens4.png"
+              alt=""
+              width="200"
+              class="w-full"
+            />
+            <div class="pa-5">
+              <p class="mb-1">Vincent Chase Polarized</p>
+              <p class="mb-1">Size:Medium</p>
+              <div class="d-flex justify-between">
+                <p style="font-weight: bold">$2000</p>
+                <div>
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="green"
+                  />
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="green"
+                  />
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="green"
+                  />
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="green"
+                  />
+                </div>
+              </div>
+            </div>
+          </v-card>
+        </v-col>
+
+        <v-col cols="12" md="6" lg="3">
+          <v-card>
+            <img
+              src="../assets/image/mens-lens/lens1.jpg"
+              alt=""
+              width="200"
+              class="w-full"
+            />
+            <div class="pa-5">
+              <p class="mb-1">Vincent Chase Polarized</p>
+              <p class="mb-1">Size:Medium</p>
+              <div class="d-flex justify-between">
+                <p style="font-weight: bold">$2000</p>
+                <div>
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="yellow"
+                  />
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="yellow"
+                  />
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="yellow"
+                  />
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="yellow"
+                  />
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="yellow"
+                  />
+                </div>
+              </div>
+            </div>
+          </v-card>
+        </v-col>
+
+        <v-col cols="12" md="6" lg="3">
+          <v-card>
+            <img
+              src="../assets/image/mens-lens/lens2.jpg"
+              alt=""
+              width="200"
+              class="w-full"
+            />
+            <div class="pa-5">
+              <p class="mb-1">Vincent Chase Polarized</p>
+              <p class="mb-1">Size:Medium</p>
+              <div class="d-flex justify-between">
+                <p style="font-weight: bold">$2000</p>
+                <div>
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="red"
+                  />
+
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="red"
+                  />
+                </div>
+              </div>
+            </div>
+          </v-card>
+        </v-col>
+
+        <v-col cols="12" md="6" lg="3">
+          <v-card>
+            <img
+              src="../assets/image/mens-lens/lens3.jpg"
+              alt=""
+              width="200"
+              class="w-full"
+            />
+            <div class="pa-5">
+              <p class="mb-1">Vincent Chase Polarized</p>
+              <p class="mb-1">Size:Medium</p>
+              <div class="d-flex justify-between">
+                <p style="font-weight: bold">$2000</p>
+                <div>
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="orange"
+                  />
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="orange"
+                  />
+
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="orange"
+                  />
+                </div>
+              </div>
+            </div>
+          </v-card>
+        </v-col>
+
+        <v-col cols="12" md="6" lg="3">
+          <v-card>
+            <img
+              src="../assets/image/mens-lens/lens4.png"
+              alt=""
+              width="200"
+              class="w-full"
+            />
+            <div class="pa-5">
+              <p class="mb-1">Vincent Chase Polarized</p>
+              <p class="mb-1">Size:Medium</p>
+              <div class="d-flex justify-between">
+                <p style="font-weight: bold">$2000</p>
+                <div>
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="green"
+                  />
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="green"
+                  />
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="green"
+                  />
+                  <Icon
+                    name="material-symbols:star"
+                    style="font-size: 20px"
+                    class="mb-3 icon"
+                    color="green"
+                  />
+                </div>
+              </div>
+            </div>
+          </v-card>
+        </v-col>
+      </v-row>
+    </section>
+  </v-container>
+
+  <section class="section5 py-10 mt-16">
+    <h2
+      class="ml-16 pb-5"
+      style="font-weight: bold; color: #4d45d1; font-size: 40px"
+    >
+      Most Sold Specs for a Reason
+    </h2>
+    <v-sheet class="mx-auto" max-width="2000" style="background-color: #eef2ff">
+      <v-slide-group show-arrows>
+        <v-slide-group-item
+          v-for="n in 25"
+          :key="n"
+          v-slot="{ isSelected, toggle }"
+        >
+          <v-card class="box">
+            <img
+              src="../assets/image/home/section5/glasses3.jpg"
+              alt=""
+              width="230"
+              class="w-full"
+            />
+            <div class="pa-3">
+              <div class="d-flex justify-between mt-4">
+                <Icon
+                  name="material-symbols:star"
+                  style="font-size: 30px"
+                  class="mb-3 icon"
+                  color="yellow"
+                />
+                <p>4.60</p>
+                <p>India</p>
+                <p>INSTOCK</p>
+              </div>
+              <p class="mb-1">Premium Transparent Glass...</p>
+              <h5>$240.00</h5>
+              <v-btn color="red">ADD TO CART</v-btn>
+            </div>
+          </v-card>
+        </v-slide-group-item>
+      </v-slide-group>
+    </v-sheet>
+  </section>
 </template>
 
 <style>
-
-.section1{
-     background-image: url("../assets/image/home/banner.jpg");
-    /* box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4); */
-    min-height: 500px;
-    max-width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
+.box {
+  width: 300px;
+  /* background-color: rgb(247, 200, 247); */
+  padding: 10px;
+  margin-inline: 10px;
 }
 
+.section1 {
+  background-image: url('../assets/image/home/banner.jpg');
+  /* box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4); */
+  min-height: 500px;
+  max-width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
 .circle {
   width: 60px;
@@ -208,43 +591,13 @@ let items = ref([
   font-size: 15px;
   font-weight: bold;
 }
-
-.card1 {
-  background-image: url('../assets/image/home/section2/section2-girl.jpg');
-  height: 600px;
-  	/* box-shadow: 0px 0px 5px rgb(109, 108, 108); */
-	object-fit: cover;
-}
-.card1:hover {
-	transform: scale(1.05);
-	transition: 0.5s;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.3);
-}
-
-.card2 {
-  background-image: url('../assets/image/home/section2/section2-boy1.jpg');
-  height: 250px;
-}
-.card2:hover {
-	transform: scale(1.05);
-	transition: 0.5s;
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.3);
-}
-
-.card3 {
-  background-image: url('../assets/image/home/section2/section2-boy2.jpg');
-  height: 270px;
-}
-.card3:hover {
-	transform: scale(1.05);
-	transition: 0.5s;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.3);
-}
-
 .w-full {
-  width: 100%;
-  max-width: 600px;
+  /* width: 100%;
+  max-width: 600px; */
   display: block;
   margin-inline: auto;
+}
+.section5 {
+  background-color: #eef2ff;
 }
 </style>

@@ -30,7 +30,7 @@ onMounted(() => {
 		</v-container> -->
 		<slot />
 	</main>
-	<!-- <Footer /> -->
+	<Footer />
 
 	<!-- Snackbar -->
 	<v-snackbar v-model="snack.visible" :color="snack.color">
