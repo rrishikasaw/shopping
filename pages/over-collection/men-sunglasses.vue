@@ -1,7 +1,7 @@
 <template>
   <v-container>
   <div class="d-flex justify-between">
-      <h3 style="font-weight: bold;" class="text-blue">Mens Glasses</h3>
+      <h3 style="font-weight: bold;" class="">Mens Glasses</h3>
       <v-text-field class="ml-3 textfield" density="compact" label="Search glasses name" variant="outlined"></v-text-field>
   </div>
     <v-row class="my-10">
