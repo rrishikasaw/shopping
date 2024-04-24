@@ -10,14 +10,14 @@ import client4 from "../assets/image/about/client4.avif"
 <template>
   <section class="section1"></section>
   <v-container>
-    <h6 class="my-10">Welcome to VisionCraft Eyewear, where fashion meets functionality and style blends seamlessly with clarity. At VisionCraft, we believe that eyewear is not just a necessity but an expression of individuality and personality. Our mission is to provide high-quality, stylish eyewear that not only enhances your vision but also complements your unique style.</h6>
+    <h6 class="my-10">Welcome to Vasudev optical Eyewear, where fashion meets functionality and style blends seamlessly with clarity. At VisionCraft, we believe that eyewear is not just a necessity but an expression of individuality and personality. Our mission is to provide high-quality, stylish eyewear that not only enhances your vision but also complements your unique style.</h6>
     <v-row>
       <v-col cols="12" md="5">
-        <img src="../assets/image/about/about-women3.webp" alt="" width="450">
+        <img src="../assets/image/about/about-women3.webp" alt="" class="image1">
       </v-col>
       <v-col>
 <h3 class="mb-5" style="font-weight: bold; color: blue;">Our Story</h3>
-<p>Established in 2010, VisionCraft Eyewear began with a simple vision: to revolutionize the way people perceive eyewear. Frustrated by the lack of fashionable options in the market, our founders set out to create a brand that offers trendy, affordable eyewear without compromising on quality. Over the years, VisionCraft has grown from a small startup to a globally recognized eyewear brand, serving customers in over 50 countries.</p>
+<p>Established in 2004, Vasudev optical Eyewear began with a simple vision: to revolutionize the way people perceive eyewear. Frustrated by the lack of fashionable options in the market, our founders set out to create a brand that offers trendy, affordable eyewear without compromising on quality. Over the years, VisionCraft has grown from a small startup to a globally recognized eyewear brand, serving customers in over 50 countries.</p>
 <h3 class="mb-5" style="font-weight: bold; color: blue;">Quality Craftsmanship</h3>
 <p>At VisionCraft, we are committed to excellence in craftsmanship. Each pair of glasses is meticulously crafted using premium materials such as high-grade acetate, lightweight metals, and scratch-resistant lenses. Our frames undergo rigorous quality control measures to ensure durability and comfort, so you can enjoy clear vision with confidence.</p>
 <!-- <h3>Fashion-forward Designs</h3>
@@ -30,7 +30,7 @@ import client4 from "../assets/image/about/client4.avif"
      <v-col cols="12" md="6" lg="3">
           <v-card max-width="400">
             <v-img class="align-end text-black" height="200" :src="client1" cover>
-              <v-card-title>James</v-card-title>
+              <!-- <v-card-title>James</v-card-title> -->
             </v-img>
           </v-card>
         </v-col>
@@ -38,7 +38,7 @@ import client4 from "../assets/image/about/client4.avif"
            <v-col cols="12" md="6" lg="3">
           <v-card max-width="400">
             <v-img class="align-end text-black" height="200" :src="client2" cover>
-              <v-card-title>Sophia</v-card-title>
+              <!-- <v-card-title>Sophia</v-card-title> -->
             </v-img>
           </v-card>
         </v-col>
@@ -46,7 +46,7 @@ import client4 from "../assets/image/about/client4.avif"
             <v-col cols="12" md="6" lg="3">
           <v-card max-width="400">
             <v-img class="align-end text-black" height="200" :src="client3" cover>
-              <v-card-title>Amelia</v-card-title>
+              <!-- <v-card-title>Amelia</v-card-title> -->
             </v-img>
           </v-card>
         </v-col>
@@ -54,7 +54,7 @@ import client4 from "../assets/image/about/client4.avif"
             <v-col cols="12" md="6" lg="3">
           <v-card max-width="400">
             <v-img class="align-end text-black" height="200" :src="client4" cover>
-              <v-card-title>William</v-card-title>
+              <!-- <v-card-title>William</v-card-title> -->
             </v-img>
           </v-card>
         </v-col>
@@ -84,5 +84,9 @@ import client4 from "../assets/image/about/client4.avif"
     max-width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.image1{
+max-width: 100%;
 }
 </style>

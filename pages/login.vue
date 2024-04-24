@@ -1,8 +1,37 @@
 <script setup>
+import { useSnackStore } from '~/stores/snack';
+let snack = useSnackStore();
 let email = ref('')
 let password = ref('')
 const remember = ref(false)
 
+async function login() {
+	
+try {
+		let res = await fetch('http://localhost:5000/api/auth/login', {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				email: email.value,
+				password: password.value,
+			}),
+			method: 'POST',
+		});
+		if (!res.ok) {
+			snack.error('Authorization failed');
+			return;
+		}
+		let json = await res.json();
+		console.log(json);
+	
+		localStorage.setItem('token', json.token);
+	
+		navigateTo('/orders');
+} catch (error) {
+	snack.error(error)
+}
+}
 
 </script>
 
@@ -20,7 +49,7 @@ const remember = ref(false)
 				<v-form validate-on="submit lazy" @submit.prevent ref="form">
 					<v-text-field
 						prepend-inner-icon="mdi-account"
-						v-model="username"
+						v-model="email"
 						variant="outlined"
 						color="blue"
 						hint="enter your email"				
@@ -45,8 +74,8 @@ const remember = ref(false)
 					<v-checkbox v-model="remember" label="Stay logged in" color="blue" hide-details></v-checkbox>
 
 					<div class="d-flex justify-space-between align-center mb-4">
-						<NuxtLink to="/forget-password" class="fz-15 me-4 mt-2">Forget Password</NuxtLink>
-						<NuxtLink to="/register">Click here to Register</NuxtLink>
+						<!-- <NuxtLink to="/forget-password" class="fz-15 me-4 mt-2">Forget Password</NuxtLink>
+						<NuxtLink to="/register">Click here to Register</NuxtLink> -->
 						<v-btn
 							@click="login"
 							type="submit"

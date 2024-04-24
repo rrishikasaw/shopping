@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
-    <v-row class="pa-10">
-      <v-col
+    <v-row class="pa-10" justify ="evenly">
+      <v-col cols="12" md="2"
         ><h4>Company</h4>
         <div class="d-flex">
           <Icon
@@ -9,7 +9,7 @@
             style="font-size: 22px"
             class="mb-3"
           />
-          <p class="mb-0">About Us</p>
+          <p class="mb-0" @click="navigateTo('/about')">About Us</p>
         </div>
         <div class="d-flex">
           <Icon
@@ -17,41 +17,17 @@
             style="font-size: 22px"
             class="mb-3"
           />
-          <p class="mb-0">Contact Us</p>
+          <p class="mb-0" @click="navigateTo('/contact')">Contact Us</p>
         </div>
 
-        <div class="d-flex">
-          <Icon
-            name="dashicons:arrow-right"
-            style="font-size: 22px"
-            class="mb-3"
-          />
-          <p class="mb-0">Privacy Policy</p>
-        </div>
-        <div class="d-flex">
-          <Icon
-            name="dashicons:arrow-right"
-            style="font-size: 22px"
-            class="mb-3"
-          />
-          <p class="mb-0">Terms and Condition</p>
-        </div>
-
-        <div class="d-flex">
-          <Icon
-            name="dashicons:arrow-right"
-            style="font-size: 22px"
-            class="mb-3"
-          />
-          <p class="mb-0">FAQs & Help</p>
-        </div>
+       
       </v-col>
 
-      <v-col>
+      <v-col cols="12" md="3">
         <h4>Contact</h4>
         <div class="d-flex">
           <Icon name="mdi:location" style="font-size: 22px" class="mb-3 mr-2" />
-          <p class="mb-0">332001 New Roshanganj Sikar Rajasthan</p>
+          <p class="mb-0">Add.atmiya complex maneja crossing.maneja Vadodara 390 013. Gujrat</p>
         </div>
         <div class="d-flex">
           <Icon
@@ -59,55 +35,34 @@
             style="font-size: 22px"
             class="mb-3 mr-2"
           />
-          <p class="mb-0">+012 345 67890</p>
+          <p class="mb-0">+9426566320</p>
         </div>
         <div class="d-flex">
           <Icon name="mdi:email" style="font-size: 22px" class="mb-3 mr-2" />
-          <p class="mb-0">Info@wisdominternationals.com</p>
+          <p class="mb-0">Vasudevoptical@gmail.com</p>
         </div>
 
-        <div class="d-flex">
-          <Icon
-            name="jam:twitter-circle"
-            style="font-size: 30px"
-            class="mb-3 mr-2"
-          />
-          <Icon
-            name="ph:facebook-logo-bold"
-            style="font-size: 30px"
-            class="mb-3 mr-2"
-          />
-          <Icon
-            name="iconoir:youtube"
-            style="font-size: 30px"
-            class="mb-3 mr-2"
-          />
-          <Icon
-            name="mingcute:linkedin-line"
-            style="font-size: 30px"
-            class="mb-3 mr-2"
-          />
-        </div>
+       
       </v-col>
 
-      <!-- <v-col
+      <v-col cols="12" md="3"
         ><h4>Gallery</h4>
         <div>
           <div class="d-flex">
             <img
-              src="../assets/image/image1.jpg"
+              src="../assets/image/mens-lens/lens3.jpg"
               width="90"
               class="mr-1"
               alt=""
             />
             <img
-              src="../assets/image/image2.avif"
+              src="../assets/image/mens-lens/lens3.jpg"
               width="90"
               class="mr-1"
               alt=""
             />
             <img
-              src="../assets/image/image3.jpg"
+              src="../assets/image/women-lens/women2.jpg"
               width="90"
               class="mr-1"
               alt=""
@@ -116,41 +71,31 @@
 
           <div class="d-flex mt-1">
             <img
-              src="../assets/image/image1.jpg"
+              src="../assets/image/women-lens/lens3.jpg"
               width="90"
               class="mr-1"
               alt=""
             />
             <img
-              src="../assets/image/image2.avif"
+              src="../assets/image/women-lens/women7.jpg"
               width="90"
               class="mr-1"
               alt=""
             />
             <img
-              src="../assets/image/image3.jpg"
+              src="../assets/image/women-lens/women6.avif"
               width="90"
               class="mr-1"
               alt=""
             />
           </div>
         </div>
-      </v-col> -->
-      <v-col>
-        <h4>Newsletter</h4>
-        <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-        <!-- <v-text-field label="Your Email" class="bg-white" variant="outlined"></v-text-field> -->
-        <v-text-field
-          hide-details
-          label="Your Email"
-          variant="solo"
-          class="bg-white"
-        ></v-text-field>
-      </v-col>
+      </v-col> 
+    
     </v-row>
-
+<hr class="hr">
     <p class="text-center pb-16">
-      © Your Site Name, All Right Reserved. Designed By Star marketing
+      ©All Right Reserved. Designed By Star marketing
     </p>
   </div>
 </template>
@@ -161,6 +106,10 @@
   color: white;
 }
 .footer2 {
+  color: white;
+}
+
+.hr{
   color: white;
 }
 </style>

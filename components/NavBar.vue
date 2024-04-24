@@ -1,5 +1,6 @@
 <script setup>
 let drawer = ref(false);
+let router = useRouter()
 function toggleDrawer() {
   drawer.value = !drawer.value;
 }
@@ -7,11 +8,13 @@ function toggleDrawer() {
 function goto(url) {
   navigateTo(url);
 }
+
+
 </script>
 
 <template>
   <v-layout>
-    <v-main style="height: 70px; background-color: black">
+    <v-main style="height: 70px; background-color: #100324">
       <header
         class="d-flex justify-between align-center bg-theme-lighten-2 px-4"
       >
@@ -19,8 +22,8 @@ function goto(url) {
           href="/"
           class="text-theme fw-bold fz-12 d-flex align-center home-link"
         >
-          <!-- <img src="../assets/image/logo/logo.jpg" alt="" width="70"> -->
-          <span class="ms-3 d-none d-md-inline">Logo</span>
+          <img src="../assets/image/logo.jpg" alt="" width="70">
+          <span class="ms-3 d-none d-md-inline"> Vasudev optical</span>
         </NuxtLink>
 
         <div class="menu h-100 d-flex align-center">
@@ -49,13 +52,68 @@ function goto(url) {
               >Login</NuxtLink
             >
 
-            <NuxtLink
-              to="/register"
+           
+
+            
+
+             <NuxtLink
+              to="/products"
               class="text-white text-decoration-none text ps-4 mr-3"
-              >Register</NuxtLink
+              >Glasses</NuxtLink
             >
 
+              <NuxtLink
+              to="/orders"
+              class="text-white text-decoration-none text ps-4 mr-3"
+              >Order</NuxtLink
+            >
+
+            
+
             <v-menu open-on-hover>
+              <template v-slot:activator="{ props }">
+                <v-btn
+                  v-bind="props"
+                  valiant="text"
+                  class="text-black text-decoration-none text ps-4"
+                >
+                  Over Collection
+                </v-btn>
+              </template>
+
+              <v-list>
+                <v-list-item>
+                  <v-list-item-title>
+                    <NuxtLink
+                      to="/over-collection/glasses?gender=male"
+                      class="text-black text-decoration-none text ps-4"
+                      >Men Sunglasses</NuxtLink
+                    >
+                    
+                  </v-list-item-title>
+                  <v-list-item-title>
+                    <NuxtLink
+                      to="/over-collection/glasses?gender=female"
+                      class="text-black text-decoration-none text ps-4"
+                      >Women Sunglasses</NuxtLink
+                    >
+                   
+                  </v-list-item-title>
+                  <v-list-item-title>
+                    <NuxtLink
+                      to="/over-collection/glasses?gender=kid"
+                      class="text-black text-decoration-none text ps-4"
+                      >Kid Sunglasses</NuxtLink
+                    >
+              
+                  </v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+
+
+<!-- 
+                <v-menu open-on-hover>
               <template v-slot:activator="{ props }">
                 <v-btn
                   v-bind="props"
@@ -74,6 +132,7 @@ function goto(url) {
                       class="text-black text-decoration-none text ps-4"
                       >Men Sunglasses</NuxtLink
                     >
+                    
                   </v-list-item-title>
                   <v-list-item-title>
                     <NuxtLink
@@ -81,6 +140,7 @@ function goto(url) {
                       class="text-black text-decoration-none text ps-4"
                       >Women Sunglasses</NuxtLink
                     >
+                   
                   </v-list-item-title>
                   <v-list-item-title>
                     <NuxtLink
@@ -88,10 +148,11 @@ function goto(url) {
                       class="text-black text-decoration-none text ps-4"
                       >Kid Sunglasses</NuxtLink
                     >
+              
                   </v-list-item-title>
                 </v-list-item>
               </v-list>
-            </v-menu>
+            </v-menu> -->
           </div>
           <v-btn class="d-lg-none" @click="drawer = true">Click</v-btn>
         </div>
@@ -115,27 +176,48 @@ function goto(url) {
         />
         <v-list-item
           prepend-icon="mdi-account-plus"
-          title="Package"
-          value="package"
-          @click="goto('/package')"
+          title="Shape of Glasses"
+          value="shape of Glasses"
+          @click="goto('/Shap-of-glasses')"
         />
         <v-list-item
           prepend-icon="mdi-briefcase-outline"
-          title="Tours and Travels"
-          value="tours and Travels"
-          @click="goto('/tours')"
+          title="Detail"
+          value="detail"
+          @click="goto('/details')"
         />
         <v-list-item
           prepend-icon="mdi-account-hard-hat"
-          title="HR Consultancy"
-          value="hR Consultancy"
-          @click="goto('/hr')"
+          title="Login"
+          value="login"
+          @click="goto('/login')"
         />
         <v-list-item
           prepend-icon="mdi-chat-processing"
-          title="Hajj Yatra"
-          value="hajj Yatra"
-          @click="goto('/hajj')"
+          title="Register"
+          value="Register"
+          @click="goto('/register')"
+        />
+
+        <v-list-item
+          prepend-icon="mdi-chat-processing"
+          title="Men Sunglasses"
+          value="Men Sunglasses"
+          @click="goto('/over-collection/men-sunglasses')"
+        />
+
+           <v-list-item
+          prepend-icon="mdi-chat-processing"
+          title="Women Sunglasses"
+          value="Women Sunglasses"
+          @click="goto('/over-collection/women-sunglasses')"
+        />
+
+           <v-list-item
+          prepend-icon="mdi-chat-processing"
+          title="Kid Sunglasses"
+          value="Kid Sunglasses"
+          @click="goto('/over-collection/kid-sunglasses')"
         />
         <v-divider></v-divider>
       </v-list>
