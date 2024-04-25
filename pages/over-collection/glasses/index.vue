@@ -1,11 +1,14 @@
 <script setup>
 import { useSnackStore } from '~/stores/snack';
 let snack = useSnackStore();
+let env = useRuntimeConfig().public.backend
 const route = useRoute();
 const gender = ref('men');
 let glasses = ref([])
 let count = ref()
 let timer
+
+
 onMounted(() => {
   getProducts();
   timer = setInterval(() => {
@@ -20,30 +23,7 @@ onUnmounted(()=>{
 })
 
 
-// async function fetchGlasses() {
-//   try {
-//     const queryParams = new URLSearchParams({
-//       limit: limit.value || '10',
-//       page: page.value || '1',
-//       search: search.value || '',
-//       type: selectedType.value || '',
-//       // gender: selectedGender.value || '',
-//     });
-//     const token = localStorage.getItem('token');
-//     const res = await fetch(`http://localhost:5000/api/glasses?${queryParams}`, {
-//       method: 'GET',
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//       },
-//     });
-//     const json = await res.json();
-//     console.log(json);
-//     glasses.value = json.glasses;
-//     count.value = json.count
-//   } catch (error) {
-//     return snack.error(error);
-//   }
-// }
+
 
 async function getProducts() {
  
@@ -55,7 +35,7 @@ async function getProducts() {
     });
     console.log(queryParams);
   
-    const res = await fetch(`http://localhost:5000/api/glasses?${queryParams}`, {
+    const res = await fetch(`${env}/glasses?${queryParams}`, {
       method: 'GET',
     });
     const json = await res.json();

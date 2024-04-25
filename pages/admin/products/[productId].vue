@@ -2,6 +2,7 @@
 const route = useRoute();
 import { useSnackStore } from '~/stores/snack';
 let snack = useSnackStore();
+let env = useRuntimeConfig().public.backend
 console.log(route.params.productId);
 
 let colors = ref([]);
@@ -67,7 +68,7 @@ async function fetchProduct() {
   try {
     const token = localStorage.getItem('token');
     let res = await fetch(
-      `http://localhost:5000/api/glasses/${route.params.productId}`,
+      `${env}/glasses/${route.params.productId}`,
       {
         method: 'GET',
         headers: {
@@ -99,7 +100,7 @@ async function fetchProduct() {
 async function deleteImage(image) {
   const token = localStorage.getItem('token');
   let res = await fetch(
-    `http://localhost:5000/api/glasses/${route.params.productId}/image`,
+    `${env}/glasses/${route.params.productId}/image`,
     {
       method: 'DELETE',
       headers: {
@@ -123,7 +124,7 @@ async function deleteImage(image) {
 async function updateProduct(image) {
   const token = localStorage.getItem('token');
   let res = await fetch(
-    `http://localhost:5000/api/glasses/${route.params.productId}`,
+    `${env}/glasses/${route.params.productId}`,
     {
       method: 'PATCH',
       headers: {
@@ -161,7 +162,7 @@ async function uploadImage(e) {
     formData.append('color', selectedColor.value);
   }
   let res = await fetch(
-    `http://localhost:5000/api/glasses/${route.params.productId}/image`,
+    `${env}/glasses/${route.params.productId}/image`,
     {
       method: 'PUT',
       headers: {

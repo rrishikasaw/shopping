@@ -1,7 +1,7 @@
 <script setup>
 import { useSnackStore } from '~/stores/snack';
 let snack = useSnackStore()
-let config = useRuntimeConfig().public
+let env = useRuntimeConfig().public.backend
 
 let title = ref('');
 let description = ref('');
@@ -14,7 +14,7 @@ let selectedGender = ref();
 let sizes = ref(['small','medium','large', 'free-size']);
 let gender = ref(['male','female','kid', 'all']);
 
-let type = ref(['round-eye','cat-eye','wayfarer','aviator','pantos','clubmaster','wrap','biker','shield','oval','square','pilot','butterfly','heart','goggles','mirrored','ful-vue','polarized']);
+let type = ref(['round-eye','cat-eye','wayfarer','aviator','pantos','club-master','wrap','biker','shield','oval','square','pilot','butterfly','heart','goggles','mirrored','full-view','polarized']);
 
 onMounted(() => {
 	if(!localStorage.getItem('token')) {
@@ -24,7 +24,7 @@ onMounted(() => {
 
 async function addGlass() {
 	const token = localStorage.getItem('token')
-	let res = await fetch(`http://localhost:5000/api/glasses/`, {
+	let res = await fetch(`${env}/glasses/`, {
 		method: 'POST',
 		headers: {
 			'content-type': 'application/json',

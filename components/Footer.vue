@@ -95,7 +95,7 @@
     </v-row>
 <hr class="hr">
     <p class="text-center pb-16">
-      ©All Right Reserved. Designed By Star marketing
+      ©All Right Reserved. <a tab="" href="https://wingstarnarketing.com">Designed By Star marketing</a>
     </p>
   </div>
 </template>

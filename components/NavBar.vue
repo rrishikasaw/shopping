@@ -8,7 +8,20 @@ function toggleDrawer() {
 function goto(url) {
   navigateTo(url);
 }
+let token = ref()
+let path = ref(location.pathname)
 
+onMounted(()=>{
+  setInterval(()=>{
+    path.value = location.pathname
+    token.value = localStorage.getItem('token')
+  }, 2000)
+})
+
+function logout(){
+  goto('/admin')
+localStorage.removeItem('token')
+}
 
 </script>
 
@@ -23,7 +36,7 @@ function goto(url) {
           class="text-theme fw-bold fz-12 d-flex align-center home-link"
         >
           <img src="../assets/image/logo.jpg" alt="" width="70">
-          <span class="ms-3 d-none d-md-inline"> Vasudev optical</span>
+          <span class="ms-3 d-none d-md-inline logo-title"> Vasudev optical</span>
         </NuxtLink>
 
         <div class="menu h-100 d-flex align-center">
@@ -42,31 +55,44 @@ function goto(url) {
 
             <NuxtLink
               to="/about"
-              class="text-white text-decoration-none text ps-4"
+              class="text-white text-decoration-none text ps-4 mr-3"
               >About</NuxtLink
             >
 
-            <NuxtLink
-              to="/login"
-              class="text-white text-decoration-none text ps-2"
-              >Login</NuxtLink
-            >
 
-           
-
-            
-
+            <template v-if="path.startsWith('/admin')">
              <NuxtLink
-              to="/products"
+              to="/admin/products"
               class="text-white text-decoration-none text ps-4 mr-3"
               >Glasses</NuxtLink
             >
 
               <NuxtLink
-              to="/orders"
+              to="/admin/orders"
               class="text-white text-decoration-none text ps-4 mr-3"
               >Order</NuxtLink
             >
+
+
+           
+                <NuxtLink
+                v-if="token"
+              to="/admin"
+              class="text-white text-decoration-none text ps-4 mr-3"
+              ><v-btn @click="logout()">Logout</v-btn></NuxtLink
+            >
+         
+            </template>
+
+            <!-- <NuxtLink
+              to="/admin"
+              class="text-white text-decoration-none text ps-2"
+              >Login</NuxtLink
+            > -->
+
+           
+
+           
 
             
 
@@ -112,49 +138,11 @@ function goto(url) {
             </v-menu>
 
 
-<!-- 
-                <v-menu open-on-hover>
-              <template v-slot:activator="{ props }">
-                <v-btn
-                  v-bind="props"
-                  valiant="text"
-                  class="text-black text-decoration-none text ps-4"
-                >
-                  Over Collection
-                </v-btn>
-              </template>
 
-              <v-list>
-                <v-list-item>
-                  <v-list-item-title>
-                    <NuxtLink
-                      to="/over-collection/men-sunglasses"
-                      class="text-black text-decoration-none text ps-4"
-                      >Men Sunglasses</NuxtLink
-                    >
-                    
-                  </v-list-item-title>
-                  <v-list-item-title>
-                    <NuxtLink
-                      to="/over-collection/women-sunglasses"
-                      class="text-black text-decoration-none text ps-4"
-                      >Women Sunglasses</NuxtLink
-                    >
-                   
-                  </v-list-item-title>
-                  <v-list-item-title>
-                    <NuxtLink
-                      to="/over-collection/kid-sunglasses"
-                      class="text-black text-decoration-none text ps-4"
-                      >Kid Sunglasses</NuxtLink
-                    >
-              
-                  </v-list-item-title>
-                </v-list-item>
-              </v-list>
-            </v-menu> -->
           </div>
-          <v-btn class="d-lg-none" @click="drawer = true">Click</v-btn>
+          <v-btn class="d-lg-none" @click="drawer = true" icon="mdi-menu">
+          
+          </v-btn>
         </div>
       </header>
     </v-main>
@@ -180,45 +168,57 @@ function goto(url) {
           value="shape of Glasses"
           @click="goto('/Shap-of-glasses')"
         />
-        <v-list-item
-          prepend-icon="mdi-briefcase-outline"
-          title="Detail"
-          value="detail"
-          @click="goto('/details')"
-        />
-        <v-list-item
-          prepend-icon="mdi-account-hard-hat"
-          title="Login"
-          value="login"
-          @click="goto('/login')"
-        />
-        <v-list-item
-          prepend-icon="mdi-chat-processing"
-          title="Register"
-          value="Register"
-          @click="goto('/register')"
-        />
 
         <v-list-item
           prepend-icon="mdi-chat-processing"
           title="Men Sunglasses"
           value="Men Sunglasses"
-          @click="goto('/over-collection/men-sunglasses')"
+          @click="goto('/over-collection/glasses?gender=male')"
         />
 
            <v-list-item
           prepend-icon="mdi-chat-processing"
           title="Women Sunglasses"
           value="Women Sunglasses"
-          @click="goto('/over-collection/women-sunglasses')"
+          @click="goto('/over-collection/glasses?gender=female')"
         />
 
            <v-list-item
           prepend-icon="mdi-chat-processing"
           title="Kid Sunglasses"
           value="Kid Sunglasses"
-          @click="goto('/over-collection/kid-sunglasses')"
+          @click="goto('/over-collection/glasses?gender=kid')"
         />
+
+       <template v-if="path.startsWith('/admin')">
+
+          <v-list-item
+          prepend-icon="mdi-briefcase-outline"
+          title="Orders"
+          value="Orders"
+          @click="goto('/admin/orders')"
+        />
+
+        <v-list-item
+          prepend-icon="mdi-account-hard-hat"
+          title="Glasses"
+          value="Glasses"
+          @click="goto('/admin/products')"
+        />
+
+       </template>
+
+        <v-list-item
+        v-if="token"
+          prepend-icon="mdi-chat-processing"
+          title="Logout"
+          value="Logout"
+          @click="logout('')"
+        />
+
+
+
+
         <v-divider></v-divider>
       </v-list>
     </v-navigation-drawer>
@@ -233,6 +233,11 @@ header {
 .logo {
   width: auto;
   height: 42px;
+}
+
+.logo-title{
+  color: white;
+  text-decoration: none !important;
 }
 
 /* .menu a {

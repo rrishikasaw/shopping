@@ -1,6 +1,7 @@
 <script setup>
 import { useSnackStore } from '~/stores/snack';
 let snack = useSnackStore();
+let env = useRuntimeConfig().public.backend
 
 let name = ref('')
 let email= ref('')
@@ -11,8 +12,7 @@ let message = ref('')
 
 async function sendMail() {
   try {
-   
-    let res = await fetch("http://localhost:5000/api/contacts", {
+    let res = await fetch(`${env}/contacts`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

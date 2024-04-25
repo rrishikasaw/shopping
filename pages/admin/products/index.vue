@@ -1,7 +1,7 @@
 <script setup>
 import { useSnackStore } from '~/stores/snack';
 let snack = useSnackStore();
-let config = useRuntimeConfig().public;
+let env = useRuntimeConfig().public.backend
 const router = useRouter();
 
 let glasses = ref([
@@ -101,7 +101,7 @@ let types = ref([
   'wayfarer',
   'aviator',
   'pantos',
-  'clubmaster',
+  'club-master',
   'wrap',
   'biker',
   'shield',
@@ -112,7 +112,7 @@ let types = ref([
   'heart',
   'goggles',
   'mirrored',
-  'ful-vue',
+  'full-view',
   'polarized',
 ]);
 let totalPages = computed(()=>Math.ceil(count.value/limit.value))
@@ -122,7 +122,7 @@ onMounted(() => {
   let token = localStorage.getItem('token');
 
   if (!token) {
-    return navigateTo('/login');
+    return navigateTo('/admin');
   }
   fetchGlasses();
 });
@@ -137,7 +137,7 @@ async function fetchGlasses() {
       // gender: selectedGender.value || '',
     });
     const token = localStorage.getItem('token');
-    const res = await fetch(`http://localhost:5000/api/glasses?${queryParams}`, {
+    const res = await fetch(`${env}/glasses?${queryParams}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -155,7 +155,7 @@ async function fetchGlasses() {
 async function deleteGlass(glassId) {
   try {
     	const token = localStorage.getItem('token');
-    let res = await fetch(`http://localhost:5000/api/glasses/${glassId}`, {
+    let res = await fetch(`${env}/glasses/${glassId}`, {
       method: 'DELETE',
       headers: {
 			authorization: `Bearer ${token}`,
@@ -181,7 +181,7 @@ async function deleteGlass(glassId) {
     <v-container>
       <v-btn
         class="my-3 button ms-auto d-block"
-        @click="navigateTo('/products/add')"
+        @click="navigateTo('/admin/products/add')"
         >Add Glass</v-btn
       >
 
@@ -264,12 +264,12 @@ async function deleteGlass(glassId) {
             <td>{{ e.createdAt }}</td>
             <td>{{ e.updatedAt }}</td>
             <td>
-              <NuxtLink :to="`/products/${e._id}`"
+              <NuxtLink :to="`/admin/products/${e._id}`"
                 ><Icon
                   name="material-symbols:info"
                   style="font-size: 30px; color: green"
                   class="mb-3 icon"
-                  @click="navigateTo(`/products/${e._id}`)"
+                  @click="navigateTo(`/admin/products/${e._id}`)"
               /></NuxtLink>
             </td>
             <td>

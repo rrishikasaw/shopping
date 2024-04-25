@@ -1,6 +1,7 @@
 <script setup>
 import { useSnackStore } from '~/stores/snack';
 let snack = useSnackStore();
+let env = useRuntimeConfig().public.backend
 import image1 from '../assets/image/home/banner2.png';
 import image2 from '../assets/image/home/banner6.png';
 import image3 from '../assets/image/home/banner7.png';
@@ -11,7 +12,6 @@ import kid from '../assets/image/section3/eye-kid.jpg';
 import mens from '../assets/image/section3/sun-men.jpg';
 import womens from '../assets/image/section3/sun-women.webp';
 import kids from '../assets/image/section3/sun-kid.jpg';
-
 let glasses = ref([]);
 let orders = ref([]);
 
@@ -28,7 +28,7 @@ async function fetchGlassesByOrder() {
     });
     const token = localStorage.getItem('token');
     const res = await fetch(
-      `http://localhost:5000/api/glasses?${queryParams}`,
+      `${env}/glasses?${queryParams}`,
       {
         method: 'GET',
       }
@@ -44,7 +44,7 @@ async function fetchGlassesByOrder() {
 
 async function fetchGlasses() {
   try {
-    const res = await fetch(`http://localhost:5000/api/glasses/orders`, {
+    const res = await fetch(`${env}/glasses/orders`, {
       method: 'GET',
     });
     const json = await res.json();
@@ -54,6 +54,13 @@ async function fetchGlasses() {
   } catch (error) {
     return snack.error(error);
   }
+}
+
+function getColors(images){
+  console.log(images);
+let x =  images.map(e=>e.color).filter(e=>e).slice(0,3)
+console.log(x);
+return x
 }
 </script>
 
@@ -128,7 +135,7 @@ async function fetchGlasses() {
 
       <v-row class="mt-10">
         <v-col>
-          <v-card max-width="400">
+          <v-card max-width="400" class="mx-auto">
             <v-img class="align-end text-black" height="200" :src="men" cover>
               <v-card-title>Men</v-card-title>
             </v-img>
@@ -136,7 +143,7 @@ async function fetchGlasses() {
         </v-col>
 
         <v-col cols="12" md="6" lg="4">
-          <v-card max-width="400">
+          <v-card max-width="400" class="mx-auto">
             <v-img class="align-end text-black" height="200" :src="women" cover>
               <v-card-title>Women</v-card-title>
             </v-img>
@@ -144,7 +151,7 @@ async function fetchGlasses() {
         </v-col>
 
         <v-col cols="12" md="6" lg="4">
-          <v-card max-width="400">
+          <v-card max-width="400" class="mx-auto">
             <v-img class="align-end text-black" height="200" :src="kid" cover>
               <v-card-title>Kid</v-card-title>
             </v-img>
@@ -158,7 +165,7 @@ async function fetchGlasses() {
 
       <v-row class="mt-10">
         <v-col cols="12" md="6" lg="4">
-          <v-card max-width="400">
+          <v-card max-width="400" class="mx-auto" >
             <v-img class="align-end text-black" height="200" :src="mens" cover>
               <v-card-title>Men</v-card-title>
             </v-img>
@@ -166,7 +173,7 @@ async function fetchGlasses() {
         </v-col>
 
         <v-col cols="12" md="6" lg="4">
-          <v-card max-width="400">
+          <v-card max-width="400" class="mx-auto">
             <v-img
               class="align-end text-black"
               height="200"
@@ -179,7 +186,7 @@ async function fetchGlasses() {
         </v-col>
 
         <v-col cols="12" md="6" lg="4">
-          <v-card max-width="400">
+          <v-card max-width="400" class="mx-auto">
             <v-img class="align-end text-black" height="200" :src="kids" cover>
               <v-card-title>Kid</v-card-title>
             </v-img>
@@ -204,7 +211,7 @@ async function fetchGlasses() {
           v-slot="{ isSelected, toggle }"
         >
           <v-card class="box">
-            <img :src="n.images[0].image" alt="" width="280" height="200" />
+            <img :src="n.images[0]?.image" alt="" width="280" height="200" />
             <div class="pa-3">
               <div class="d-flex justify-between mt-4">
                 <p class="mb-1 fw-bold fz-13">{{ n.title }}</p>
@@ -228,7 +235,7 @@ async function fetchGlasses() {
       <v-row class="my-10">
         <v-col cols="12" md="6" lg="3" v-for="e of glasses">
           <v-card @click="navigateTo(`/over-collection/glasses/${e._id}`)">
-            <img :src="e.images[0].image" alt="" width="200" class="w-full" />
+            <img :src="e.images[0]?.image" alt="" width="200" class="w-full" />
 
             <div class="pa-5">
               <p class="mb-1">{{ e.title }}</p>
@@ -242,10 +249,10 @@ async function fetchGlasses() {
                 <p style="font-weight: bold">${{ e.price }}</p>
                 <div class="d-flex">
                   <span
-                    v-for="(image, index) in e.images"
-                    :key="index"
+                    v-for="color of getColors(e.images)"
+                    :key="color"
                     class="circle"
-                    :style="{ backgroundColor: image.color }"
+                    :style="{ backgroundColor: color }"
                   ></span>
                 </div>
               </div>

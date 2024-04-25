@@ -2,6 +2,7 @@
 // import { getMaxListeners } from 'events';
 import { useSnackStore } from '~/stores/snack';
 let snack = useSnackStore();
+let env = useRuntimeConfig().public.backend
 let config = useRuntimeConfig().public;
 
 let orders = ref([]);
@@ -37,7 +38,7 @@ onMounted(() => {
   	let token = localStorage.getItem('token');
 
 	if (!token) {
-		return navigateTo('/login');
+		return navigateTo('/admin');
 	}
   fetchOrders();
 });
@@ -56,7 +57,7 @@ async function fetchOrders() {
       type: selectedType.value || ""
     });
 
-    const res = await fetch(`http://localhost:5000/api/orders?${queryParams}`,{
+    const res = await fetch(`${env}/orders?${queryParams}`,{
       method:'GET',
       headers: {
 			Authorization: `Bearer ${token}`,
@@ -133,6 +134,7 @@ let totalPages = computed(()=>Math.ceil(count.value/limit.value))
             <th class="text-left">Name</th>
             <th class="text-left">Phone</th>
             <th class="text-left">Email</th>
+            <th class="text-left">Gender</th>
             <th class="text-left">Status</th>
             <th class="text-left">Address</th>
             <th class="text-left">Country</th>
@@ -147,7 +149,7 @@ let totalPages = computed(()=>Math.ceil(count.value/limit.value))
           <tr v-for="e of orders" :key="e._id">
             <td>{{ e._id }}</td>
             <td>
-              <nuxt-link :to="`/products/${e.glass}`">{{ e.glass }}</nuxt-link>
+              <nuxt-link :to="`/admin/products/${e.glass}`">{{ e.glass }}</nuxt-link>
             </td>
             <td>{{ e.color }}</td>
             <td>{{ e.price }}</td>
@@ -156,6 +158,7 @@ let totalPages = computed(()=>Math.ceil(count.value/limit.value))
             <td>{{ e.name }}</td>
             <td>{{ e.phone }}</td>
             <td>{{ e.email }}</td>
+            <td>{{ e.gender }}</td>
           
               <v-select
                 style="width:150px"

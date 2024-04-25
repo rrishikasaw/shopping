@@ -1,7 +1,7 @@
 <script setup>
 import { useSnackStore } from '~/stores/snack';
 const route = useRoute();
-const config = useRuntimeConfig().public;
+let env = useRuntimeConfig().public.backend
 const snack = useSnackStore();
 let title = ref('');
 let description = ref('');
@@ -11,7 +11,7 @@ let sizes = ref('');
 let genders = ref('');
 let product = ref();
 let selectedImage = ref();
-let colors = ref('');
+// let colors = ref('');
 const imageDialog = ref(false);
 let details = ref(false);
 let images = ref([
@@ -20,6 +20,9 @@ let images = ref([
   '/image/home/image4.avif',
   '/image/home/image1.webp',
 ]);
+let colors = computed(()=>{
+  return images.value.map(e=> e.color).filter(e=>e)
+})
 
 const totalPrice = computed(
   () =>
@@ -33,7 +36,7 @@ onMounted(() => {
 async function fetchProduct() {
   try {
     let res = await fetch(
-      `http://localhost:5000/api/glasses/${route.params.glassId}`,
+      `${env}/glasses/${route.params.glassId}`,
       {
         method: 'GET',
         // headers: {
@@ -72,15 +75,19 @@ let city = ref('gkjgkjgg')
 let state = ref('ggjgjg')
 let zip  =ref('870709')
 let country = ref('jgkjgjkgj')
-let color = ref('red')
+let selectedColor = ref();
 let price = ref('790709');
 let size = ref('')
 let gender = ref('')
 
 async function postOder() {
 
+  if(colors.value.length && !selectedColor.value){
+    return snack.error("please select any color")
+  }
+
   let res = await fetch(
-    `http://localhost:5000/api/orders`,
+    `${env}/orders`,
     {
       method: 'POST',
       headers: {
@@ -91,7 +98,7 @@ async function postOder() {
         email: email.value,
         phone: phone.value,
         price: "1234565678",
-        color:color.value,
+        color:selectedColor.value,
         size: size.value,
         city: city.value,
         zip: zip.value,
@@ -109,6 +116,7 @@ async function postOder() {
     return snack.error(json.message);
   }
   snack.success('oder added successfully');
+  details.value = false
 }
 
 
@@ -232,6 +240,8 @@ const total_price = computed(() => {
               >
             </p>
 
+         
+
             <p class="text-start fz-10">
               <span>
                 <b>₹ {{ price }}</b>
@@ -247,6 +257,21 @@ const total_price = computed(() => {
               <v-select label="Size" v-model="size" :items="sizes"></v-select>
             </div>
 
+               <div class="d-flex flex-wrap">
+          <p
+            v-for="e of colors"
+            :key="e"
+            class="rounded-circle m-1 color"
+            :style="{
+              backgroundColor: e,
+              border: selectedColor === e ? `5px double white` : undefined,
+            }"
+            @click="selectedColor = selectedColor === e ? undefined : e"
+          ></p>
+
+        
+        </div>
+
             <div class="d-flex">
               <span
                 v-for="(e, index) in colors"
@@ -259,7 +284,7 @@ const total_price = computed(() => {
             <div class="d-flex quantity-controls mt-10">
               <p class="mr-10">Quantity</p>
               <div class="box" @click="decrement">➖</div>
-              <p>{{ quantity }}</p>
+              <p class="quantity">{{ quantity }}</p>
               <div class="box" @click="increment">➕</div>
             </div>
 
@@ -382,6 +407,11 @@ const total_price = computed(() => {
 .text-field {
   width: 600px;
 }
+.quantity{
+  font-weight: bold;
+  font-size: 20px;
+  margin-inline: 15px;
+}
 
 .size {
   border-radius: 10px solid black;
@@ -459,7 +489,8 @@ const total_price = computed(() => {
   height: 40px;
   color: white;
   background-color: rgb(231, 222, 222);
-  border-radius: 30px;
+  padding: 8px;
+ 
 }
 
 .box:hover {
