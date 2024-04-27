@@ -168,6 +168,7 @@ async function deleteGlass(glassId) {
 
     let json = await res.json();
     snack.success(json.message);
+    glasses.value  = glasses.value.filter((e)=> e._id!==glassId)
   } catch (error) {
     return snack.error(error);
   }

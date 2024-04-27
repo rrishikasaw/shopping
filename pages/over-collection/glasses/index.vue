@@ -1,12 +1,24 @@
 <script setup>
 import { useSnackStore } from '~/stores/snack';
 let snack = useSnackStore();
-let env = useRuntimeConfig().public.backend
+let env = useRuntimeConfig().public.backend;
 const route = useRoute();
 const gender = ref('men');
-let glasses = ref([])
-let count = ref()
-let timer
+let glasses = ref([]);
+let count = ref();
+let timer;
+
+function getColors(images) {
+  console.log(images);
+  let x = images
+    .map((e) => e.color)
+    .filter((e) => e)
+    .slice(0, 3);
+  console.log(x);
+  return x;
+}
+
+
 
 
 onMounted(() => {
@@ -18,30 +30,25 @@ onMounted(() => {
   }, 1000);
 });
 
-onUnmounted(()=>{
-  clearInterval(timer)
-})
-
-
-
+onUnmounted(() => {
+  clearInterval(timer);
+});
 
 async function getProducts() {
- 
-   try {
-
-     gender.value = route.query.gender
+  try {
+    gender.value = route.query.gender;
     const queryParams = new URLSearchParams({
-      gender : gender.value
+      gender: gender.value,
     });
     console.log(queryParams);
-  
+
     const res = await fetch(`${env}/glasses?${queryParams}`, {
       method: 'GET',
     });
     const json = await res.json();
     console.log(json);
     glasses.value = json.glasses;
-    count.value = json.count
+    count.value = json.count;
   } catch (error) {
     return snack.error(error);
   }
@@ -64,27 +71,31 @@ async function getProducts() {
     <v-row class="my-10">
       <v-col cols="12" md="6" lg="3" v-for="e of glasses">
         <v-card @click="navigateTo(`/over-collection/glasses/${e._id}`)">
-         <img
-      :src="e.images[0].image"
-      alt=""
-      width="200"
-      class="w-full"
-    />
+          <img :src="e.images[0].image" alt="" width="200" class="w-full" />
 
           <div class="pa-5">
             <p class="mb-1">{{ e.title }}</p>
-            <p class="mb-1">Size :  <span v-for="i of e.size"><v-chip color="blue">{{ i }}</v-chip></span></p>
+            <p class="mb-1">
+              Size :
+              <span v-for="i of e.size"
+                ><v-chip color="blue">{{ i }}</v-chip></span
+              >
+            </p>
             <div class="d-flex justify-between">
               <p style="font-weight: bold">${{ e.price }}</p>
               <div class="d-flex">
-               <span v-for="(image, index) in e.images" :key="index" class="circle" :style="{ backgroundColor: image.color }"></span>
+                 <span
+                    v-for="color of getColors(e.images)"
+                    :key="color"
+                    class="circle"
+                    :style="{ backgroundColor: color }"
+                  ></span>
+              
               </div>
             </div>
           </div>
         </v-card>
       </v-col>
-
-   
     </v-row>
 
     <v-row class=""> </v-row>
@@ -105,9 +116,9 @@ async function getProducts() {
   max-width: 500px;
 }
 
-.circle{
-  max-width: 23px;
-  max-height: 23px;
- 
+.circle {
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
 }
 </style>

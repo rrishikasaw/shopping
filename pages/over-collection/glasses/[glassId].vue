@@ -67,16 +67,16 @@ async function fetchProduct() {
 
 let quantity = ref(1)
 console.log(quantity.value);
-let name = ref('test')
-let email = ref('test@gmail.com')
-let phone = ref('12345678909')
-let address = ref('gkgkgkjgkg')
-let city = ref('gkjgkjgg')
-let state = ref('ggjgjg')
-let zip  =ref('870709')
-let country = ref('jgkjgjkgj')
+let name = ref('')
+let email = ref('')
+let phone = ref('')
+let address = ref('')
+let city = ref('')
+let state = ref('')
+let zip  =ref('')
+let country = ref('')
 let selectedColor = ref();
-let price = ref('790709');
+let price = ref('');
 let size = ref('')
 let gender = ref('')
 
@@ -272,14 +272,7 @@ const total_price = computed(() => {
         
         </div>
 
-            <div class="d-flex">
-              <span
-                v-for="(e, index) in colors"
-                :key="index"
-                class="circle"
-                :style="{ backgroundColor: e }"
-              ></span>
-            </div>
+        
 
             <div class="d-flex quantity-controls mt-10">
               <p class="mr-10">Quantity</p>

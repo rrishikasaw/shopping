@@ -35,7 +35,7 @@
             style="font-size: 22px"
             class="mb-3 mr-2"
           />
-          <p class="mb-0">+9426566320</p>
+          <p class="mb-0">9426566320</p>
         </div>
         <div class="d-flex">
           <Icon name="mdi:email" style="font-size: 22px" class="mb-3 mr-2" />

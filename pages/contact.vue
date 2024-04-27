@@ -62,7 +62,7 @@ async function sendMail() {
           class="mb-3 mr-7 icon"
           color="green"
         />
-        <p>+9426566320</p>
+        <p>9426566320</p>
       </div>
 
       <div class="d-flex">

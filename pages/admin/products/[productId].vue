@@ -1,5 +1,6 @@
 <script setup>
 const route = useRoute();
+const router = useRouter()
 import { useSnackStore } from '~/stores/snack';
 let snack = useSnackStore();
 let env = useRuntimeConfig().public.backend
@@ -79,6 +80,11 @@ async function fetchProduct() {
     const json = await res.json();
     console.log(json);
     if (!res.ok) {
+
+     if(res.status===404){
+      router.back()
+   return snack.error('glass not found')
+     }
       return console.log('product not found');
     }
     title.value = json.glass.title;
@@ -116,9 +122,8 @@ async function deleteImage(image) {
   if (!res.ok) {
     return snack.error(json.message);
   }
-  // images.value = json.glass.images.filter((e) => e !== image);
-  // snack.success('Image removed successfully');
-  alert('Image removed successfully');
+  images.value = images.value.filter((e) => e!== image);
+  snack.success('Image removed successfully');
 }
 
 async function updateProduct(image) {
@@ -283,7 +288,6 @@ async function uploadImage(e) {
         <v-select
           variant="solo"
           :items="types"
-        
           chips
           density="compact"
           label="Type"
@@ -291,12 +295,11 @@ async function uploadImage(e) {
           clearable
         ></v-select>
 
-         <v-select
+        <v-select
           variant="solo"
           :items="genders"
-         
           chips
-           multiple
+          multiple
           density="compact"
           label="Gender"
           v-model="selectedGender"
@@ -306,7 +309,6 @@ async function uploadImage(e) {
         <v-select
           variant="solo"
           :items="sizes"
-           
           multiple
           chips
           density="compact"

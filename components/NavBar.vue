@@ -48,7 +48,7 @@ localStorage.removeItem('token')
             >
 
             <NuxtLink
-              to="/Shap-of-glasses"
+              to="/shape-of-glasses"
               class="text-white text-decoration-none text ps-4"
               >Shape of glasses</NuxtLink
             >
@@ -166,7 +166,7 @@ localStorage.removeItem('token')
           prepend-icon="mdi-account-plus"
           title="Shape of Glasses"
           value="shape of Glasses"
-          @click="goto('/Shap-of-glasses')"
+          @click="goto('/shape-of-glasses')"
         />
 
         <v-list-item

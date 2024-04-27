@@ -77,7 +77,7 @@ async function fetchOrders() {
 
 async function updateStatus(order,status) {
 const token = localStorage.getItem('token')
-	let res = await fetch(`http://localhost:5000/api/orders/${order._id}`, {
+	let res = await fetch(`${env}/orders/${order._id}`, {
 		method: 'PATCH',
 		 headers: {
         authorization: `Bearer ${token}`,
